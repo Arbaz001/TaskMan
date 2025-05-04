@@ -1,1 +1,70 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #f8e8ff 0%, #f3f0ff 100%);
+  min-height: 100vh;
+  color: #22223b;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #f3f0ff;
+}
+::-webkit-scrollbar-thumb {
+  background: #e0c3fc;
+  border-radius: 8px;
+}
+
+input, textarea, select, button {
+  font-family: inherit;
+  outline: none;
+  transition: box-shadow 0.2s, border 0.2s;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #a259ff;
+  box-shadow: 0 0 0 2px #e0c3fc;
+}
+
+button {
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.bg-glass {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 32px 0 rgba(160,89,255,0.08);
+}
+
+.card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px 0 rgba(160,89,255,0.07);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .card, .bg-glass {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .card, .bg-glass {
+    padding: 0.5rem;
+  }
+  .sidebar {
+    display: none;
+  }
+}
