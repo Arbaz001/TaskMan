@@ -9,17 +9,19 @@ import PendingTasks from './pages/PendingTasks'
 import CompletedTasks from './pages/CompletedTasks'
 import Profile from './pages/Profile'
 import TaskForm from './pages/TaskForm'
+import { ThemeProvider, useTheme } from './components/ThemeContext';
+import DarkModeToggle from './components/DarkModeToggle';
 
-const App = () => {
+const AppContent = () => {
   const location = useLocation();
   const hideSidebar = location.pathname === '/login' || location.pathname === '/signup';
   const hideNavbar = location.pathname === '/login' || location.pathname === '/signup';
   return (
-    <div>
+    <div className="relative min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       {!hideNavbar && <Navbar />}
       <div className="flex">
         {!hideSidebar && <Sidebar />}
-        <main className="flex-1 p-6 bg-gray-50 min-h-screen">
+        <main className="flex-1 p-6 min-h-screen">
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/login" element={<Login />} />
@@ -30,9 +32,16 @@ const App = () => {
             <Route path="/taskform" element={<TaskForm />} />
           </Routes>
         </main>
+        {!hideSidebar && <DarkModeToggle />}
       </div>
     </div>
   )
 }
+
+const App = () => (
+  <ThemeProvider>
+    <AppContent />
+  </ThemeProvider>
+)
 
 export default App

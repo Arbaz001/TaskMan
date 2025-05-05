@@ -40,30 +40,11 @@ button {
   transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 
-.bg-glass {
-  background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 4px 32px 0 rgba(160,89,255,0.08);
-}
-
-.card {
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 2px 16px 0 rgba(160,89,255,0.07);
-  padding: 2rem;
-  margin-bottom: 1.5rem;
-}
-
 @media (max-width: 900px) {
-  .card, .bg-glass {
-    padding: 1rem;
-  }
+  /* No custom card/glass padding, handled by Tailwind */
 }
 
 @media (max-width: 600px) {
-  .card, .bg-glass {
-    padding: 0.5rem;
-  }
   .sidebar {
     display: none;
   }

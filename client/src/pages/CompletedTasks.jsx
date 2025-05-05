@@ -27,7 +27,6 @@ const CompletedTasks = () => {
   }, [location.pathname]);
 
   const handleEdit = (task) => {
-    // For future extensibility (if you want to edit completed tasks)
     fetchTasks();
   };
 
@@ -41,22 +40,24 @@ const CompletedTasks = () => {
   };
 
   return (
-    <div>
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold">Completed Tasks</h1>
+    <div aria-label="Completed Tasks">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
+        <h1 className="text-2xl font-bold text-purple-800 dark:text-purple-300">Completed Tasks</h1>
         <div className="flex gap-2">
-          <button className="px-3 py-1 bg-gray-200 rounded">Sort by: Newest</button>
-          <button className="px-3 py-1 bg-gray-200 rounded">Priority</button>
+          <button className="px-3 py-1 bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-purple-400">Sort by: Newest</button>
+          <button className="px-3 py-1 bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-purple-400">Priority</button>
         </div>
       </div>
       {loading ? (
-        <div>Loading...</div>
+        <div className="flex justify-center items-center min-h-[80px]">
+          <span className="text-gray-500 dark:text-gray-400 animate-pulse">Loading...</span>
+        </div>
       ) : error ? (
-        <div className="text-red-600">{error}</div>
+        <div className="text-red-600 dark:text-red-300">{error}</div>
       ) : (
-        <div className="flex flex-col gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {tasks.length === 0 ? (
-            <div className="bg-white p-6 rounded shadow text-center text-gray-400">No completed tasks</div>
+            <div className="bg-white dark:bg-gray-900 p-6 rounded shadow text-center text-gray-400 dark:text-gray-500">No completed tasks</div>
           ) : (
             tasks.map(task => <TaskCard key={task._id} task={task} onEdit={handleEdit} onDelete={handleDelete} />)
           )}
